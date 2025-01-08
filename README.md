@@ -40,30 +40,30 @@ Thymeleaf
 전체 조회 | 사이드바에서 현재 속한 방들의 전체 읽지 않은 메시지 갯수를 확인할 수 있습니다.
 개별 조회 | 나의 채팅방에서 각 방마다 읽지 않은 메시지 갯수를 확인할 수 있습니다. 
 
-## 구현 화면
+# 구현 화면
 
-### 회원가입 검증
+## 회원가입 검증
 <img src="\src\main\resources\static\images\회원검증.PNG"/>
 
 검증1 : @vaild 유효성 검사 진행  
 검증2 : 회원 DB 조회 후 이미 존재하는지 여부 확인  
 
-### 로그인 검증
+## 로그인 검증
 <img src="\src\main\resources\static\images\로긴검증.PNG"/>
 
 검증 : 회원 DB 조회 후 아이디 / 패스워드 검증
 
-### 채팅방 생성 검증
+## 채팅방 생성 검증
 <img src="\src\main\resources\static\images\채팅방검증.PNG"/>
 
 검증1 : 클릭 시 로그인 체크(Interceptor) -> 로그인 성공 시 지정한 targetURL로 이동  
 검증2 : @Vaild 유효성 검사  
 비밀번호 설정 : 체크박스 선택 시 비밀번호 설정 가능(Default 0)
 
-### 전체 채팅방 조회
+## 전체 채팅방 조회
 <img src="\src\main\resources\static\images\전체 채팅방.PNG"/>
 
-### 채팅방 입장 검증
+## 채팅방 입장 검증
 <img src="\src\main\resources\static\images\채팅방비밀번호검증.PNG"/>
 
 인원수 체크 : 해당 채팅방 인원수 초과 시(alert창 생성)  
@@ -71,7 +71,7 @@ Thymeleaf
 성공 -> 채팅방 입장  
 실패 -> alert창 생성
 
-### 실시간 채팅
+## 실시간 채팅
 <img src="\src\main\resources\static\images\채팅방기능.PNG"/>
 
 유저 리스트 : 채팅방에 속한 유저를 확인할 수 있음  
@@ -79,13 +79,13 @@ Thymeleaf
 메시지 저장 : 입력한 메시지는 DB에 저장(Ajax)  
 메시지 확인 : 나가지 않는 이상 채팅방 입장 시 기존에 작성했던 메시지를 확인할 수 있음.
 
-### 강퇴기능
+## 강퇴기능
 <img src="\src\main\resources\static\images\강퇴기능스.PNG"/>
 
 생성자 : 유저 클릭 시 Confirm창 생성 -> 강퇴 DELETE (ROOM_USER_TBL)  
 사용자 : 권한 없음 alert창 생성
 
-### 방삭제 / 나가기
+## 방삭제 / 나가기
 <img src="\src\main\resources\static\images\방나가기삭제.PNG"/>
 
 생성자 : 해당 채팅방 삭제 (CHAT_ROOM)  
@@ -94,7 +94,7 @@ Thymeleaf
 사용자 : 해당 채팅방 나가기 (ROOM_USER_TBL)  
 -> DELETE CASCADE (CHAT_MESSAGE, MESSAGE_READ_STATUS)
 
-### 읽음 상태 
+## 읽음 상태 
 <img src="\src\main\resources\static\images\읽음상태.PNG"/>
 
 전체 메시지 : 사이드바에서 현재 읽지 않은 메시지 갯수 확인  
