@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hong.test.chat.model.mapper.ChatMapper">
+
+    <insert id="insertChatMessage">
+        INSERT INTO CHAT_MESSAGE (CHAT_NO, ROOM_ID, WRITER, MESSAGE, CHAT_DATE)
+        VALUES (
+        SEQ_CHAT_NO.NEXTVAL, #{roomId}, #{writer}, #{message},
+        DEFAULT
+        )
+    </insert>
+
+    <insert id="insertReadStatus">
+        INSERT INTO MESSAGE_READ_STATUS
+        (CHAT_NO, ROOM_ID, USER_NAME, READ_STATUS)
+        VALUES (SEQ_CHAT_NO.CURRVAL, #{roomId}, #{userName}, #{readStatus})
+    </insert>
+
+    <resultMap id="readStatusMap" type="ReadStatus">
+        <result property="chatNo" column="CHAT_NO"/>
+        <result property="roomId" column="ROOM_ID"/>
+        <result property="userName" column="USER_NAME"/>
+        <result property="readStatus" column="READ_STATUS"/>
+    </resultMap>
+
+    <select id="getChatMessageStatus" resultMap="readStatusMap">
+        SELECT CHAT_NO, ROOM_ID, USER_NAME, READ_STATUS
+        FROM MESSAGE_READ_STATUS
+        WHERE USER_NAME = #{joinUser} AND READ_STATUS = 0 AND ROOM_ID = #{roomId}
+    </select>
+
+    <select id="countNotReadByUser" resultType="int">
+        SELECT COUNT(*) FROM MESSAGE_READ_STATUS WHERE USER_NAME = #{joinUser} AND READ_STATUS = 0
+    </select>
+
+    <update id="updateReadStatusToRead">
+        UPDATE MESSAGE_READ_STATUS
+        SET READ_STATUS = 1
+        WHERE CHAT_NO IN
+        <foreach item="chatNo" collection="chatNos" open="(" separator="," close=")">
+            #{chatNo}
+        </foreach>
+        AND ROOM_ID = #{roomId}
+        AND USER_NAME = #{joinUser}
+    </update>
+
+    <select id="getPreviousMessages" resultType="ChatMessage">
+        SELECT DISTINCT  cm.ROOM_ID, cm.WRITER, cm.MESSAGE, cm.CHAT_NO
+        FROM CHAT_MESSAGE cm
+        JOIN ROOM_USER_TBL ru ON cm.ROOM_ID = ru.ROOM_ID
+        WHERE cm.ROOM_ID = #{roomId}
+        AND cm.CHAT_DATE >= #{roomAt} ORDER BY cm.CHAT_NO
+    </select>
+
+    <select id="getChatRoomDetails" resultMap="chatRoomDetailsMap">
+        SELECT cr.ROOM_ID, cr.ROOM_NAME, ru.JOIN_USER, ru.USER_ROLE
+        FROM CHAT_ROOM cr
+        JOIN ROOM_USER_TBL ru ON cr.ROOM_ID = ru.ROOM_ID
+        WHERE cr.ROOM_ID = #{roomId}
+    </select>
+
+    <resultMap id="chatRoomDetailsMap" type="com.hong.test.chat.model.dto.ChatRoomDetails">
+        <result property="roomId" column="ROOM_ID" />
+        <result property="joinUser" column="JOIN_USER" />
+        <result property="roomName" column="ROOM_NAME" />
+        <result property="userRole" column="USER_ROLE" />
+    </resultMap>
+</mapper>

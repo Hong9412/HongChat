@@ -1,0 +1,105 @@
+/* 전체 배경 색상 및 텍스트 색상 */
+body {
+    background-color: #212529; /* 어두운 배경색 */
+    color: #eaeaea; /* 텍스트 색상 */
+}
+
+/* 채팅 메시지 영역 */
+.chat-container {
+    height: 60vh;  /* 채팅 메시지 영역 */
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #343a40;
+    border-radius: 10px;
+}
+
+/* 채팅 메시지 스타일 */
+.chat-message {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #495057;
+}
+
+/* 메시지 사용자 이름 */
+.message-user {
+    font-weight: bold;
+    color: #ffc107;
+}
+
+/* 메시지 본문 */
+.message-text {
+    color: #f8f9fa;
+}
+
+/* 입력 영역 스타일 */
+.card-footer {
+    background-color: #343a40;
+    border-top: 1px solid #495057;
+}
+
+.card-footer input {
+    width: 85%;
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #444;
+    background-color: #495057;
+    color: #f8f9fa;
+}
+
+.card-footer button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+    background-color: #343a40;
+    padding: 20px;
+    color: #fff;
+    height: 100vh;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h5 {
+    color: #ffc107;
+}
+
+.sidebar a {
+    color: #f8f9fa;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: #007bff;
+}
+
+/* 사용자 목록 영역 */
+.user-list-container {
+    background-color: #343a40;
+    padding: 10px;
+    border-radius: 10px;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.user-list-title {
+    color: #ffc107;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.user-list-item {
+    background-color: #495057;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    color: #f8f9fa;
+}
+
+.user-list-item:hover {
+    background-color: #007bff;
+    cursor: pointer;
+}

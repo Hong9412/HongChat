@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>사이드바</title>
+    </head>
+    <body>
+    <div th:fragment="sidebar">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4">채팅프로그램</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li>
+                    <a href="/createRoom" class="nav-link text-white">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        채팅방 생성
+                    </a>
+                </li>
+                <li>
+                    <a href="/myRoom" class="nav-link text-white">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                        나의 채팅방
+                        <span id="notReadCount" class="badge bg-danger" style="display: none;">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/allRoom" class="nav-link text-white">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                        전체 채팅방
+                    </a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+    </div>
+    </body>
+    <script src="/js/common.js"></script>
+</html>
