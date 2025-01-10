@@ -13,7 +13,7 @@ Thymeleaf
 2024/12/24 ~ 2025.01.09
 
 ## ERD 구조도
-<img src="\src\main\resources\static\images\ERD구조도.PNG"/>
+<img src="\src\main\resources\static\images\채팅ERD.PNG"/>
 
 ## 주요 기능
 
